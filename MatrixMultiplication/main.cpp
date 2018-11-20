@@ -11,8 +11,15 @@
 #include <stdexcept>
 #include <stdio.h>
 #include <string.h>
+#include "Matrix/matrix.hpp"
 
 using namespace std;
+
+void singleThreadMultiplication(){
+    matrix matrixA(make_pair(3, 3));
+    matrix matrixB(make_pair(4, 4));
+    matrix matrixC = matrixA * matrixB;
+}
 
 int main(int argc, char* argv[]) {
     
@@ -38,6 +45,7 @@ int main(int argc, char* argv[]) {
         }
         case ST: {
             cout << "Matrix Multiplication using single thread." << endl;
+            singleThreadMultiplication();
             break;
         }
         case MT: {

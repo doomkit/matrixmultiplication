@@ -15,18 +15,20 @@ using namespace std;
 
 class matrix {
     public:
-        /* Construct matrix from txt file */
-        matrix(const char* filename);
-    
-        /* Overload multiplication operator */
-        friend matrix operator* (const matrix &A, const matrix &B);
-    
-    private:
         vector<vector<double>> rows;
         pair<int, int> dimensions;
     
-        /* Used in constructor only */
-        void setDimension();
+        /* Generates random matrix of defined size */
+        matrix(pair<int, int>);
+    
+        /* Generates matrix from vector */
+        matrix(vector<vector<double>>);
+    
+        /* Overload multiplication operator, simple single thread multiplication */
+        friend matrix operator* (const matrix, const matrix);
+    
+//        /* Multi thread matrix multiplication */
+//        matrix multiThreadMultiplication(const matrix, const matrix);
 };
 
 #endif /* matrix_hpp */

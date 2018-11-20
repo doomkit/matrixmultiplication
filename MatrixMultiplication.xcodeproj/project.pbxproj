@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1195281A21874B1200409180 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1195280A2187133800409180 /* main.cpp */; };
 		11DB7388218A5185007525BA /* matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 11DB7386218A5185007525BA /* matrix.cpp */; };
-		11DB738C218B31A7007525BA /* generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 11DB738A218B31A7007525BA /* generator.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,8 +29,6 @@
 		11952819218728E900409180 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		11DB7386218A5185007525BA /* matrix.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = matrix.cpp; sourceTree = "<group>"; };
 		11DB7387218A5185007525BA /* matrix.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = matrix.hpp; sourceTree = "<group>"; };
-		11DB738A218B31A7007525BA /* generator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = generator.cpp; sourceTree = "<group>"; };
-		11DB738B218B31A7007525BA /* generator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = generator.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,9 +61,6 @@
 		119528092187133800409180 /* MatrixMultiplication */ = {
 			isa = PBXGroup;
 			children = (
-				11DB7389218B3161007525BA /* RandomMatrixGenerator */,
-				11952818218728CB00409180 /* Output */,
-				11952817218728B500409180 /* Input */,
 				1195281421871F3900409180 /* Matrix */,
 				1195280A2187133800409180 /* main.cpp */,
 				11952819218728E900409180 /* README.md */,
@@ -81,29 +75,6 @@
 				11DB7387218A5185007525BA /* matrix.hpp */,
 			);
 			path = Matrix;
-			sourceTree = "<group>";
-		};
-		11952817218728B500409180 /* Input */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Input;
-			sourceTree = "<group>";
-		};
-		11952818218728CB00409180 /* Output */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Output;
-			sourceTree = "<group>";
-		};
-		11DB7389218B3161007525BA /* RandomMatrixGenerator */ = {
-			isa = PBXGroup;
-			children = (
-				11DB738A218B31A7007525BA /* generator.cpp */,
-				11DB738B218B31A7007525BA /* generator.hpp */,
-			);
-			path = RandomMatrixGenerator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,7 +135,6 @@
 			files = (
 				11DB7388218A5185007525BA /* matrix.cpp in Sources */,
 				1195281A21874B1200409180 /* main.cpp in Sources */,
-				11DB738C218B31A7007525BA /* generator.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
