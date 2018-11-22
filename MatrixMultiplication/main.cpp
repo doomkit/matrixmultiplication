@@ -16,9 +16,14 @@
 using namespace std;
 
 void singleThreadMultiplication(){
-    matrix matrixA(make_pair(3, 3));
-    matrix matrixB(make_pair(4, 4));
-    matrix matrixC = matrixA * matrixB;
+    matrix matrixA(make_pair(3, 2));
+    matrix matrixB(make_pair(2, 3));
+    try {
+        matrix matrixC = matrixA * matrixB;
+        cout << "End.";
+    } catch (invalid_argument e) {
+        throw e;
+    }
 }
 
 int main(int argc, char* argv[]) {
@@ -45,7 +50,14 @@ int main(int argc, char* argv[]) {
         }
         case ST: {
             cout << "Matrix Multiplication using single thread." << endl;
-            singleThreadMultiplication();
+            try {
+                singleThreadMultiplication();
+            } catch (invalid_argument e) {
+                cout << e.what() << '\n';
+                cout << "Test failed." << '\n';
+                return 1;
+            }
+            
             break;
         }
         case MT: {

@@ -25,7 +25,7 @@ class matrix {
         matrix(vector<vector<double>>);
     
         /* Overload multiplication operator, simple single thread multiplication */
-        friend matrix operator* (const matrix, const matrix);
+        friend matrix operator* (matrix, matrix);
     
 //        /* Multi thread matrix multiplication */
 //        matrix multiThreadMultiplication(const matrix, const matrix);
