@@ -13,7 +13,8 @@
 
 using namespace std;
 
-class matrix {
+class matrix
+{
     public:
         vector<vector<double>> rows;
         pair<int, int> dimensions;

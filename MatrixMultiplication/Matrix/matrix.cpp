@@ -46,11 +46,7 @@ matrix operator*(matrix A, matrix B)
     //  Amount of matrixA rows should be equal to amount of matrixB columns.
     if (A.dimensions.second != B.dimensions.first)
     {
-        throw invalid_argument("Can't multiply matricies with dimensions <"
-                               + to_string(A.dimensions.first) + "," + to_string(A.dimensions.second)
-                               + "> and <"
-                               + to_string(B.dimensions.first) + "," + to_string(B.dimensions.second)
-                               + ">.");
+        throw invalid_argument("Can't multiply matricies given dimensions.\n");
     }
     
     //  Straightforward multiplication
@@ -73,6 +69,6 @@ matrix operator*(matrix A, matrix B)
 };
 
 
-//matrix::matrix multiThreadMultiplication(const matrix &A, const matrix &B){
+//matrix::matrix strassenMultiplication(const matrix &A, const matrix &B){
 //    return nullptr;
 //};
