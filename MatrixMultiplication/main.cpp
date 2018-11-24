@@ -15,6 +15,13 @@
 
 #include "Matrix/matrix.hpp"
 
+// Define matricies size
+#define SIZE_1 20
+#define SIZE_2 20
+
+// Define max ammount of threads
+#define MAX_THREAD
+
 using namespace std;
 
 // Timer
@@ -25,26 +32,24 @@ template <typename TimePoint> std::chrono::milliseconds to_ms(TimePoint tp) {
 // Singlethread scenarion
 void singleThreadMultiplication()
 {
-    // Define matricies' demensions
-    pair<int,int> size_a = make_pair(500, 500);
-    pair<int,int> size_b = make_pair(500, 500);
+    pair<int, int> size_a = make_pair(SIZE_1, SIZE_2);
+    pair<int, int> size_b = make_pair(SIZE_2, SIZE_1);
     
     // Generate random matricies
     matrix matrixA(size_a);
     matrix matrixB(size_b);
+    
+    cout    << "Matricies were generated.\n"
+            << "Dimensions are: "
+            << size_a.first << "x"
+            << size_a.second << ", "
+            << size_b.first << "x"
+            << size_b.second << "\n"
+            << "Starting multiplication using single thread.\n";
     try {
-        cout    << "Matricies were generated.\n"
-                << "Dimensions are: "
-                << size_a.first << "x"
-                << size_a.second << ", "
-                << size_b.first << "x"
-                << size_b.second << "\n"
-                << "Starting multiplication using single thread.\n";
-        
         auto start = std::chrono::high_resolution_clock::now();
         matrix matrixC = matrixA * matrixB;
         auto end = std::chrono::high_resolution_clock::now();
-        
         std::cout   << "Needed " << to_ms(end - start).count()
                     << " ms to finish multiplication using single thread.\n";
     } catch (invalid_argument e) {
@@ -52,9 +57,37 @@ void singleThreadMultiplication()
     }
 }
 
-void multithreadMultiplication()
+void multithreadMultiplication(unsigned concurentThreadsSupported)
 {
+    pair<int, int> size_a = make_pair(SIZE_1, SIZE_2);
+    pair<int, int> size_b = make_pair(SIZE_2, SIZE_1);
     
+    // Generate random matricies
+    matrix matrixA(size_a);
+    matrix matrixB(size_b);
+    
+    // Check if we can use 2 or more threads
+    if (concurentThreadsSupported < 2) {
+        throw new invalid_argument("Can't start multithread multiplication.\nYour system supports only singlethread multiplication.\n");
+    }
+    int threads = (concurentThreadsSupported >= 4) ? 4 : 2;
+    
+    cout    << "Matricies were generated.\n"
+            << "Dimensions are: "
+            << size_a.first << "x"
+            << size_a.second << ", "
+            << size_b.first << "x"
+            << size_b.second << "\n"
+            << "Starting multithread multiplication with " << threads << " treads.\n";
+    try {
+        auto start = std::chrono::high_resolution_clock::now();
+        matrix matrixC = strassenMultiplication(&matrixA, &matrixB, threads);
+        auto end = std::chrono::high_resolution_clock::now();
+        std::cout   << "Needed " << to_ms(end - start).count()
+                    << " ms to finish multiplication using single thread.\n";
+    } catch (invalid_argument e) {
+        throw e;
+    }
 }
 
 int main(int argc, char* argv[])
@@ -63,7 +96,7 @@ int main(int argc, char* argv[])
     options choise = FAIL;
     
     // Number of concurrent threads supported
-    unsigned int concurentThreadsSupported = std::thread::hardware_concurrency();
+    unsigned concurentThreadsSupported = std::thread::hardware_concurrency();
     
     if (strcmp(argv[1], "-help") == 0)
         choise = HELP;
@@ -94,16 +127,9 @@ int main(int argc, char* argv[])
             break;
         }
         case MT: {
-            
-            
-            if (concurentThreadsSupported == 1 || concurentThreadsSupported == 0) {
-                cout    << "Can't start multithread multiplication.\n"
-                        << "Your system supports only singlethread multiplication.";
-                return 1;
-            }
+            cout << "Matrix Multiplication using multi thread." << endl;
             try {
-                cout << "Matrix Multiplication using multi thread." << endl;
-                multithreadMultiplication();
+                multithreadMultiplication(concurentThreadsSupported);
             } catch (invalid_argument e) {
                 cout << e.what() << "Test failed.\n";
                 return 1;

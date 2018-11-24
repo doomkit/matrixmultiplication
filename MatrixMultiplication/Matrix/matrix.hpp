@@ -25,11 +25,11 @@ class matrix
         /* Generates matrix from vector */
         matrix(vector<vector<double>>);
     
-        /* Overload multiplication operator, simple single thread multiplication */
+        /* Strightforward single thread multiplication */
         friend matrix operator* (matrix, matrix);
-    
-        /* Multi thread matrix multiplication */
-        matrix strassenMultiplication(matrix, matrix);
 };
+
+/* Multi thread matrix multiplication */
+matrix strassenMultiplication(matrix* matrixA, matrix* matrixB, int threads);
 
 #endif /* matrix_hpp */
