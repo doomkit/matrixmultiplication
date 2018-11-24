@@ -62,21 +62,18 @@ matrix operator*(matrix A, matrix B)
 struct thread_data {
     int matrix_part;
     int size;
-    vector<vector<double>> rows;
     matrix *matrixA;
     matrix *matrixB;
+    matrix *matrixC;
 };
 
 void *computeSubmatrix(void *arg)
 {
     struct thread_data *data = (struct thread_data *) arg;
-    for (int a = data->matrix_part * data->size / 4; a < (data->matrix_part + 1) * data->matrix_part / 4; a++) {
+    for (int a = data->matrix_part * data->size / 4; a < (data->matrix_part + 1) * data->size / 4; a++) {
         for (int b = 0; b < data->size; b++) {
             for (int c = 0; c < data->size; c++) {
-                double one = data->matrixA->rows[a][c];
-                double two = data->matrixB->rows[c][b];
-                double val = one * two;
-                data->rows[a][b] += val;
+                data->matrixC->rows[a][b] += data->matrixA->rows[a][c] * data->matrixB->rows[c][b];
             }
         }
     }
@@ -93,18 +90,20 @@ matrix strassenMultiplication(matrix* A, matrix* B, int max_thread)
     }
     
     pthread_t threads[max_thread];
+    
     int _size = A->dimensions.first;
     vector<vector<double>> _rows(_size, vector<double>(_size));
+    matrix C(_rows);
     
     struct thread_data data[max_thread];
     int res;
     
     for (int i = 0; i < max_thread; i++){
-        data[i].matrix_part = i+1;
+        data[i].matrix_part = i;
         data[i].size = _size;
-        data[i].rows = _rows;
         data[i].matrixA = A;
         data[i].matrixB = B;
+        data[i].matrixC = &C;
         res = pthread_create(&threads[i], NULL, computeSubmatrix, (void *)&data[i]);
         if (res) {
             cout << "Error: unable to create thread, " << res << "\n";
@@ -115,7 +114,5 @@ matrix strassenMultiplication(matrix* A, matrix* B, int max_thread)
     for (int i = 0; i < max_thread; i++) {
         pthread_join(threads[i], NULL);
     }
-    
-    matrix matixC(_rows);
-    return matixC;
+    return C;
 };

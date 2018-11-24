@@ -16,8 +16,8 @@
 #include "Matrix/matrix.hpp"
 
 // Define matricies size
-#define SIZE_1 20
-#define SIZE_2 20
+#define SIZE_1 1000
+#define SIZE_2 1000
 
 // Define max ammount of threads
 #define MAX_THREAD
@@ -29,6 +29,17 @@ template <typename TimePoint> std::chrono::milliseconds to_ms(TimePoint tp) {
     return std::chrono::duration_cast<std::chrono::milliseconds>(tp);
 }
 
+void printMatrix(matrix matrixA) {
+    cout << "\n";
+    for (int i = 0; i < matrixA.dimensions.first; i++){
+        for (int j = 0; j < matrixA.dimensions.second; j++) {
+            cout << matrixA.rows[i][j] << "\t";
+        }
+        cout << "\n";
+    }
+    cout << "\n";
+}
+
 // Singlethread scenarion
 void singleThreadMultiplication()
 {
@@ -38,6 +49,9 @@ void singleThreadMultiplication()
     // Generate random matricies
     matrix matrixA(size_a);
     matrix matrixB(size_b);
+    
+    //    printMatrix(matrixA);
+    //    printMatrix(matrixB);
     
     cout    << "Matricies were generated.\n"
             << "Dimensions are: "
@@ -52,6 +66,8 @@ void singleThreadMultiplication()
         auto end = std::chrono::high_resolution_clock::now();
         std::cout   << "Needed " << to_ms(end - start).count()
                     << " ms to finish multiplication using single thread.\n";
+        
+//        printMatrix(matrixC);
     } catch (invalid_argument e) {
         throw e;
     }
@@ -65,6 +81,9 @@ void multithreadMultiplication(unsigned concurentThreadsSupported)
     // Generate random matricies
     matrix matrixA(size_a);
     matrix matrixB(size_b);
+    
+//    printMatrix(matrixA);
+//    printMatrix(matrixB);
     
     // Check if we can use 2 or more threads
     if (concurentThreadsSupported < 2) {
@@ -85,6 +104,8 @@ void multithreadMultiplication(unsigned concurentThreadsSupported)
         auto end = std::chrono::high_resolution_clock::now();
         std::cout   << "Needed " << to_ms(end - start).count()
                     << " ms to finish multiplication using single thread.\n";
+        
+        printMatrix(matrixC);
     } catch (invalid_argument e) {
         throw e;
     }
