@@ -45,6 +45,7 @@
 		119527FE2187133700409180 = {
 			isa = PBXGroup;
 			children = (
+				11952819218728E900409180 /* README.md */,
 				119528092187133800409180 /* MatrixMultiplication */,
 				119528082187133800409180 /* Products */,
 			);
@@ -63,7 +64,6 @@
 			children = (
 				1195281421871F3900409180 /* Matrix */,
 				1195280A2187133800409180 /* main.cpp */,
-				11952819218728E900409180 /* README.md */,
 			);
 			path = MatrixMultiplication;
 			sourceTree = "<group>";

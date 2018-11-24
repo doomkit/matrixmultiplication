@@ -14,8 +14,11 @@ Use `-mt` flag to run this application in multithread mode.
 
 For multithread option I've created method strassenMultiplication( ) in class matrix. It devides given matricies into sub-matricies and each thread works with its own sub-matrix.
 
-**Important condition:**  
-Matricies shoud be square with even dimensions (For example: 2x2, 4x4, 6x6...).
+**Important conditions:**  
+
+* Matricies shoud be square with even dimensions (For example: 2x2, 4x4, 6x6...)
+* Matricies shoud have same dimensions
+* 2 or more concurrent threads have to be supported (otherwise you can run only singlethread multiplication)
 
 ## Comparison
 

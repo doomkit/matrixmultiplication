@@ -6,35 +6,33 @@
 //  Copyright © 2018 Nikita Shkarupa. All rights reserved.
 //
 
-
 #include <iostream>
 #include <stdexcept>
 #include <stdio.h>
 #include <string.h>
 #include <chrono>
+#include <thread>
 
 #include "Matrix/matrix.hpp"
 
 using namespace std;
 
-template <typename TimePoint>
-std::chrono::milliseconds to_ms(TimePoint tp)
-{
+// Timer
+template <typename TimePoint> std::chrono::milliseconds to_ms(TimePoint tp) {
     return std::chrono::duration_cast<std::chrono::milliseconds>(tp);
 }
 
+// Singlethread scenarion
 void singleThreadMultiplication()
 {
-
     // Define matricies' demensions
-    pair<int,int> size_a = make_pair(1000, 500);
-    pair<int,int> size_b = make_pair(500, 1000);
+    pair<int,int> size_a = make_pair(500, 500);
+    pair<int,int> size_b = make_pair(500, 500);
     
     // Generate random matricies
     matrix matrixA(size_a);
     matrix matrixB(size_b);
-    try
-    {
+    try {
         cout    << "Matricies were generated.\n"
                 << "Dimensions are: "
                 << size_a.first << "x"
@@ -49,18 +47,23 @@ void singleThreadMultiplication()
         
         std::cout   << "Needed " << to_ms(end - start).count()
                     << " ms to finish multiplication using single thread.\n";
-    }
-    catch (invalid_argument e)
-    {
+    } catch (invalid_argument e) {
         throw e;
     }
 }
 
-int main(int argc, char* argv[])
+void multithreadMultiplication()
 {
     
+}
+
+int main(int argc, char* argv[])
+{
     enum options {HELP, ST, MT, FAIL};
     options choise = FAIL;
+    
+    // Number of concurrent threads supported
+    unsigned int concurentThreadsSupported = std::thread::hardware_concurrency();
     
     if (strcmp(argv[1], "-help") == 0)
         choise = HELP;
@@ -71,39 +74,45 @@ int main(int argc, char* argv[])
     if (argc != 2)
         choise = FAIL;
     
-    switch(choise)
-    {
-        case HELP:
-        {
-            cout << "Help-menu:" << endl;
-            cout << "-st\t for single-thread mode" << endl;
-            cout << "-mt\t for multi-thread mode" << endl;
-            cout << "Program will generate random matricies for demonstration." << endl;
+    switch(choise) {
+        case HELP: {
+            cout    << "Help-menu:\n"
+                    << "-st\t for single-thread mode\n"
+                    << "-mt\t for multi-thread mode\n"
+                    << "Concurrent threads supported: " << concurentThreadsSupported << "\n\n"
+                    << "Find more information in README";
             break;
         }
-        case ST:
-        {
+        case ST: {
             cout << "Matrix Multiplication using single thread." << endl;
-            try
-            {
+            try {
                 singleThreadMultiplication();
-            }
-            catch (invalid_argument e)
-            {
+            } catch (invalid_argument e) {
                 cout << e.what() << "Test failed.\n";
                 return 1;
             }
             break;
         }
-        case MT:
-        {
-            cout << "Matrix Multiplication using multi thread." << endl;
+        case MT: {
+            
+            
+            if (concurentThreadsSupported == 1 || concurentThreadsSupported == 0) {
+                cout    << "Can't start multithread multiplication.\n"
+                        << "Your system supports only singlethread multiplication.";
+                return 1;
+            }
+            try {
+                cout << "Matrix Multiplication using multi thread." << endl;
+                multithreadMultiplication();
+            } catch (invalid_argument e) {
+                cout << e.what() << "Test failed.\n";
+                return 1;
+            }
             break;
         }
-        default:
-        {
-            cout << "Error: Invalid arguments recived." << endl;
-            cout << "Use --help to see commands list." << endl;
+        default: {
+            cout    << "Error: Invalid arguments recived.\n"
+                    << "Use --help to see commands list." << endl;
             return 1;
         }
     }

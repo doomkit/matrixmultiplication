@@ -28,8 +28,8 @@ class matrix
         /* Overload multiplication operator, simple single thread multiplication */
         friend matrix operator* (matrix, matrix);
     
-//        /* Multi thread matrix multiplication */
-//        matrix multiThreadMultiplication(const matrix, const matrix);
+        /* Multi thread matrix multiplication */
+        matrix strassenMultiplication(matrix, matrix);
 };
 
 #endif /* matrix_hpp */
