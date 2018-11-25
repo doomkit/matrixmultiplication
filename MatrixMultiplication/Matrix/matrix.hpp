@@ -16,14 +16,14 @@ using namespace std;
 class matrix
 {
     public:
-        vector<vector<double>> rows;
+        vector<vector<double> > rows;
         pair<int, int> dimensions;
     
         /* Generates random matrix of defined size */
         matrix(pair<int, int>);
     
         /* Generates matrix from vector */
-        matrix(vector<vector<double>>);
+        matrix(vector<vector<double> >);
     
         /* Strightforward single thread multiplication */
         friend matrix operator* (matrix, matrix);

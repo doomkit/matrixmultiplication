@@ -53,7 +53,7 @@ void singleThreadMultiplication()
     //    printMatrix(matrixA);
     //    printMatrix(matrixB);
     
-    cout    << "Matricies were generated.\n"
+    cout    << "Matrices were generated.\n"
             << "Dimensions are: "
             << size_a.first << "x"
             << size_a.second << ", "
@@ -91,7 +91,7 @@ void multithreadMultiplication(unsigned concurentThreadsSupported)
     }
     int threads = (concurentThreadsSupported >= 4) ? 4 : 2;
     
-    cout    << "Matricies were generated.\n"
+    cout    << "Matrices were generated.\n"
             << "Dimensions are: "
             << size_a.first << "x"
             << size_a.second << ", "
@@ -103,9 +103,9 @@ void multithreadMultiplication(unsigned concurentThreadsSupported)
         matrix matrixC = strassenMultiplication(&matrixA, &matrixB, threads);
         auto end = std::chrono::high_resolution_clock::now();
         std::cout   << "Needed " << to_ms(end - start).count()
-                    << " ms to finish multiplication using single thread.\n";
+                    << " ms to finish multiplication using " << threads << " threads.\n";
         
-        printMatrix(matrixC);
+//        printMatrix(matrixC);
     } catch (invalid_argument e) {
         throw e;
     }
