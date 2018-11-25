@@ -24,6 +24,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1105B8C921AADB7E006E6822 /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
 		119528072187133800409180 /* MatrixMultiplication */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MatrixMultiplication; sourceTree = BUILT_PRODUCTS_DIR; };
 		1195280A2187133800409180 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		11952819218728E900409180 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -45,6 +46,7 @@
 		119527FE2187133700409180 = {
 			isa = PBXGroup;
 			children = (
+				1105B8C921AADB7E006E6822 /* CMakeLists.txt */,
 				11952819218728E900409180 /* README.md */,
 				119528092187133800409180 /* MatrixMultiplication */,
 				119528082187133800409180 /* Products */,

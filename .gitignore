@@ -1,1 +1,9 @@
+# Mac OS generated files
+
 .DS_Store
+
+# Cmake files
+
+cmake_install.cmake
+CMakeFiles
+Makefile

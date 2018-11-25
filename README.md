@@ -50,6 +50,22 @@ Program ended with exit code: 0
 
 As the result we have 4-5 times faster multiplication using 4 threads instead of just one. 
 
+## Run
+
+Go to `Build/Products/Release/` and run from terminal `./MatrixMultiplication opt` to execute release build or you can run
+
+```
+cmake CMakeLists.txt
+make
+./runfile opt
+```
+
+ where opt is one of these options:
+ 
+* `-help` opens help menu  
+* `-st` runs single thread multiplication  
+* `-mt` runs multithread multiplication  
+
 ## Other
 
 * Use `-help` flag to open help menu

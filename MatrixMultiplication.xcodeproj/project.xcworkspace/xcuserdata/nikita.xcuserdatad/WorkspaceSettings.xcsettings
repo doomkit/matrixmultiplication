@@ -3,15 +3,15 @@
 <plist version="1.0">
 <dict>
 	<key>BuildLocationStyle</key>
-	<string>UseAppPreferences</string>
+	<string>CustomLocation</string>
 	<key>CustomBuildIntermediatesPath</key>
-	<string>/Users/nikita/Local/projects/xCode/MatrixMultiplication/MatrixMultiplication/Build</string>
+	<string>Build/Intermediates.noindex</string>
 	<key>CustomBuildLocationType</key>
-	<string>Absolute</string>
+	<string>RelativeToWorkspace</string>
 	<key>CustomBuildProductsPath</key>
-	<string>/Users/nikita/Local/projects/xCode/MatrixMultiplication/MatrixMultiplication/Build</string>
+	<string>Build/Products</string>
 	<key>CustomIndexStorePath</key>
-	<string>/Users/nikita/Local/projects/xCode/MatrixMultiplication/MatrixMultiplication/Build</string>
+	<string>Index/DataStore</string>
 	<key>DerivedDataLocationStyle</key>
 	<string>Default</string>
 	<key>EnabledFullIndexStoreVisibility</key>
