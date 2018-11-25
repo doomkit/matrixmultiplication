@@ -24,7 +24,7 @@ For multithread option I've created method strassenMultiplication( ) in class ma
 
 Comparison of these two multiplication in **Release mode**.  
 **Computing power:** 2,3 GHz Intel Core i5 , Cores 2, Threads 4
-Memory leaks were not detected while testing app in build in xCode profile testing.
+Memory leaks were not detected while testing app with build in xCode profile testing.
 
 Output of single thread multiplication:
 
@@ -50,7 +50,7 @@ Program ended with exit code: 0
 
 As the result we have 4-5 times faster multiplication using 4 threads instead of just one. 
 
-## Run
+## Build and Run
 
 Go to `Build/Products/Release/` and run from terminal `./MatrixMultiplication opt` to execute release build or you can run
 
@@ -60,7 +60,7 @@ make
 ./runfile opt
 ```
 
- where opt is one of these options:
+ where **opt** is one of these options:
  
 * `-help` opens help menu  
 * `-st` runs single thread multiplication  
@@ -68,25 +68,26 @@ make
 
 ## Other
 
-* Use `-help` flag to open help menu
 * All matrices are generated randomly using get_random_double( ) method from CourseWare
-* Time test starts after matrices are generated, so it only shows time spent on multiplication
+* Time test starts after matrices are generated, so it shows time spent on multiplication only
 * Both algorithms works correct (method printMatrix( ) allows us to check it manually on small matricies)
 
-**Code**
-- [ ] CMakeLists.txt
-- [x] More threads if more cores
-- [x] One thread implementation
-- [x] OpenMP, VLA etc are not used
-- [x] Additional libraries (POSIX, Win32 etc) are not used
+### Checklist
 
-**Test**
-- [x] Binary in "Release" mode
-- [x] Multithread is faster
-- [x] Both singlethread and multithread outputs are correct
+**Kód**
+- [x] Obsahuje váš kód CMakeLists.txt přes který se vaše semestrálka dá postavit?
+- [x] Používá váš kód více vláken když má k dispozici více jader?
+- [x] Obsahuje váš kód implementaci optimalizovanou pro jedno vlákno?
+- [x] Nepoužívá váš kód rozšíření jazyka? (Například OpenMP, VLA)
+- [x] Nepoužívá váš kód nepřenosné knihovny (Například POSIX, Win32)
+
+**Měření**
+- [x] Proběhlo měření nad optimalizovaným programem? (Byla binárka zkompilována v "Release" módu?)
+- [x] Vyšel běh využívající více vláken rychlejší?
+- [x] Vyšel běh využívající více vláken stejně jako běh v jednom vlákně?
 
 **Docs**
-- [ ] Commit hash
-- [x] Project description
-- [x] Results description
-- [x] Test environment
+- [x] Obsahuje vaše zpráva hash commitu (nebo tag), vůči kterému byla napsaná?
+- [x] Obsahuje vaše zpráva popis zadání?
+- [x] Obsahuje vaše zpráva popis naměřených výsledků?
+- [x] Obsahuje vaše zpráva popis prostředí, ve kterém jste prováděli měření?
