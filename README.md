@@ -72,22 +72,3 @@ make
 * Time test starts after matrices are generated, so it shows time spent on multiplication only
 * Both algorithms works correct (method printMatrix( ) allows us to check it manually on small matricies)
 
-### Checklist
-
-**Kód**
-- [x] Obsahuje váš kód CMakeLists.txt přes který se vaše semestrálka dá postavit?
-- [x] Používá váš kód více vláken když má k dispozici více jader?
-- [x] Obsahuje váš kód implementaci optimalizovanou pro jedno vlákno?
-- [x] Nepoužívá váš kód rozšíření jazyka? (Například OpenMP, VLA)
-- [x] Nepoužívá váš kód nepřenosné knihovny (Například POSIX, Win32)
-
-**Měření**
-- [x] Proběhlo měření nad optimalizovaným programem? (Byla binárka zkompilována v "Release" módu?)
-- [x] Vyšel běh využívající více vláken rychlejší?
-- [x] Vyšel běh využívající více vláken stejně jako běh v jednom vlákně?
-
-**Docs**
-- [x] Obsahuje vaše zpráva hash commitu (nebo tag), vůči kterému byla napsaná?
-- [x] Obsahuje vaše zpráva popis zadání?
-- [x] Obsahuje vaše zpráva popis naměřených výsledků?
-- [x] Obsahuje vaše zpráva popis prostředí, ve kterém jste prováděli měření?
