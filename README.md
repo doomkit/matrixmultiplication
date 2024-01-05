@@ -1,7 +1,5 @@
 # Matrix multiplication
 
-**Author:** Shkarupa Nikita, skarunik@fel.cvut.cz
-
 ## Single thread multiplication
 
 Use  `-st` flag to run this application using single thread. 
